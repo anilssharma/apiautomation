@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "order-management-api"
+version = "0.1.0"
+description = "Order status history API and endpoint automation tests"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.110,<1.0",
+    "python-dotenv>=1.0,<2.0",
+    "sqlalchemy>=2.0,<3.0",
+    "greenlet<3.2; python_version < '3.10'",
+    "pyodbc>=5.0,<6.0",
+    "uvicorn[standard]>=0.27,<1.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "httpx>=0.27,<1.0",
+    "pytest>=8.0,<9.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -v"
+log_cli = true
+log_cli_level = "INFO"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
